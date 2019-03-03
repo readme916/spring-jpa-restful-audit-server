@@ -27,7 +27,7 @@
 
 	<div class="container">
 		<div class="row">
-			<form action="/search/" method="get">
+			<form action="/" method="get" th:action="@{'/' + ${searchPath}}">
 			<div class="col-lg-2">查询uuid</div>
 			<div class="col-lg-8"><input name="uuid" /></div>	
 			<div class="col-lg-2"><input type="submit" value="查询"/></div>

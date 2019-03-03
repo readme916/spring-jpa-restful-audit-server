@@ -26,12 +26,12 @@ public class ApiController {
 	protected MongoTemplate mongoTemplate;
 
 
-	@RequestMapping(path="/log",method=RequestMethod.POST)
+	@RequestMapping(path="/api",method=RequestMethod.POST)
 	public String add(@RequestBody AuditLog log) {
 		AuditLog insert = mongoTemplate.insert(log, "logs");
 		return "ok";
 	}
-	@RequestMapping(path="/log/{uuid}",method=RequestMethod.GET)
+	@RequestMapping(path="/api/{uuid}",method=RequestMethod.GET)
 	@ResponseBody
 	public Object list(@PathVariable String uuid, Pageable pageable) {
 		

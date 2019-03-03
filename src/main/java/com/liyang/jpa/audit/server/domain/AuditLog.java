@@ -31,7 +31,7 @@ public class AuditLog {
 	private String city;
 	private String district;
 	private String imei;
-	private Operate operate;
+	private String operate;
 	private LinkType linkType;
 	private String ownerResource;
 	@Indexed
@@ -42,11 +42,11 @@ public class AuditLog {
 	
 	
 	
-	public Operate getOperate() {
+	public String getOperate() {
 		return operate;
 	}
 
-	public void setOperate(Operate operate) {
+	public void setOperate(String operate) {
 		this.operate = operate;
 	}
 
