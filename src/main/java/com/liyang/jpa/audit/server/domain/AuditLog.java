@@ -38,7 +38,7 @@ public class AuditLog {
 	private String ownerUuid;
 	private String uuid;
 	private String postBody;
-	private HashMap<String,DiffItem> difference;
+	private String difference;
 	
 	
 	
@@ -66,11 +66,11 @@ public class AuditLog {
 		this.id = id;
 	}
 
-	public HashMap<String, DiffItem> getDifference() {
+	public String getDifference() {
 		return difference;
 	}
 
-	public void setDifference(HashMap<String, DiffItem> difference) {
+	public void setDifference(String difference) {
 		this.difference = difference;
 	}
 

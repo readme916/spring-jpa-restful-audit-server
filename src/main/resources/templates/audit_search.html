@@ -73,6 +73,10 @@
 						<div class="col-lg-2">资源ID</div>
 						<div class="col-lg-10" th:text="${item.ownerUuid}"></div>
 					</div>
+						<div class="row">
+						<div class="col-lg-2">变动</div>
+						<div class="col-lg-10"><pre th:text="${item.difference}"></pre></div>
+					</div>
 
 				</div>
 			</div>
