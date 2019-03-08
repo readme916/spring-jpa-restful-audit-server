@@ -2,6 +2,7 @@ package com.liyang.jpa.audit.server.domain;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -23,7 +24,7 @@ public class AuditLog {
 	private String requestPath;
 	private String createBy;
 	private Date createAt;
-	private Terminal terminal;
+	private String client;
 	private String ip;
 	private String latitude;
 	private String longitude;
@@ -37,11 +38,17 @@ public class AuditLog {
 	@Indexed
 	private String ownerUuid;
 	private String uuid;
-	private String postBody;
+	private Map<String,Object> postBody;
 	private String difference;
 	
-	
-	
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
+	}
+
 	public String getOperate() {
 		return operate;
 	}
@@ -116,13 +123,7 @@ public class AuditLog {
 		this.createBy = createBy;
 	}
 
-	public Terminal getTerminal() {
-		return terminal;
-	}
 
-	public void setTerminal(Terminal terminal) {
-		this.terminal = terminal;
-	}
 
 	public Date getCreateAt() {
 		return createAt;
@@ -199,20 +200,13 @@ public class AuditLog {
 	}
 
 
-	public String getPostBody() {
+	public Map<String,Object> getPostBody() {
 		return postBody;
 	}
 
-	public void setPostBody(String postBody) {
+	public void setPostBody(Map<String,Object> postBody) {
 		this.postBody = postBody;
 	}
 
-
-
-
-	public enum Terminal{
-		ANDROID,IOS,WXWORK_DESK,WXWORK_MOBILE,WXPUBLIC_DESK,WXPUBLIC_MOBILE,BROWSER,ELECTRON,API
-	}
-	
 	
 }
