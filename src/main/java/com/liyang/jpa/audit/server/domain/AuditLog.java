@@ -11,7 +11,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.liyang.jpa.audit.server.common.LinkType;
-import com.liyang.jpa.audit.server.common.Operate;
 
 
 @Document(collection="logs")
@@ -32,7 +31,7 @@ public class AuditLog {
 	private String city;
 	private String district;
 	private String imei;
-	private String operate;
+	private String event;
 	private LinkType linkType;
 	private String ownerResource;
 	@Indexed
@@ -49,12 +48,12 @@ public class AuditLog {
 		this.client = client;
 	}
 
-	public String getOperate() {
-		return operate;
+	public String getEvent() {
+		return event;
 	}
 
-	public void setOperate(String operate) {
-		this.operate = operate;
+	public void setEvent(String event) {
+		this.event = event;
 	}
 
 	public LinkType getLinkType() {
