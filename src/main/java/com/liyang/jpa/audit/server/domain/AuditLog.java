@@ -21,8 +21,8 @@ public class AuditLog {
 	private String application;
 	@Indexed
 	private String requestPath;
-	private String createBy;
-	private Date createAt;
+	private String createdBy;
+	private Date createdAt;
 	private String client;
 	private String ip;
 	private String latitude;
@@ -33,12 +33,16 @@ public class AuditLog {
 	private String imei;
 	private String event;
 	private LinkType linkType;
-	private String ownerResource;
+	private String resource;
 	@Indexed
-	private String ownerUuid;
 	private String uuid;
+	
+	private String subResource;
+	private String subResourceId;
 	private Map<String,Object> postBody;
-	private String difference;
+	
+
+	private Map difference;
 	
 	public String getClient() {
 		return client;
@@ -72,28 +76,37 @@ public class AuditLog {
 		this.id = id;
 	}
 
-	public String getDifference() {
+	public Map getDifference() {
 		return difference;
 	}
 
-	public void setDifference(String difference) {
+	public void setDifference(Map difference) {
 		this.difference = difference;
 	}
 
-	public String getOwnerResource() {
-		return ownerResource;
+
+	public String getResource() {
+		return resource;
 	}
 
-	public void setOwnerResource(String ownerResource) {
-		this.ownerResource = ownerResource;
+	public void setResource(String resource) {
+		this.resource = resource;
 	}
 
-	public String getOwnerUuid() {
-		return ownerUuid;
+	public String getSubResource() {
+		return subResource;
 	}
 
-	public void setOwnerUuid(String ownerUuid) {
-		this.ownerUuid = ownerUuid;
+	public void setSubResource(String subResource) {
+		this.subResource = subResource;
+	}
+
+	public String getSubResourceId() {
+		return subResourceId;
+	}
+
+	public void setSubResourceId(String subResourceId) {
+		this.subResourceId = subResourceId;
 	}
 
 	public String getUuid() {
@@ -114,22 +127,21 @@ public class AuditLog {
 		this.application = application;
 	}
 
-	public String getCreateBy() {
-		return createBy;
+
+	public String getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreateBy(String createBy) {
-		this.createBy = createBy;
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 
-
-
-	public Date getCreateAt() {
-		return createAt;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public String getIp() {

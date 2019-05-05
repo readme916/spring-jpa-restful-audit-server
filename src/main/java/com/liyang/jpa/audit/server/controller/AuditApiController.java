@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.liyang.jpa.audit.server.common.HTTPListResponse;
 import com.liyang.jpa.audit.server.domain.AuditLog;
 
 @RestController
-public class ApiController {
+public class AuditApiController {
 	
 	@Autowired
 	protected MongoTemplate mongoTemplate;
@@ -40,11 +41,24 @@ public class ApiController {
 	public Object list(@PathVariable String uuid, Pageable pageable) {
 		
 		Query query = new Query();
-		query.addCriteria(Criteria.where("ownerUuid").is(uuid));
-		query.with(new Sort(Sort.Direction.DESC, "createAt"));		
+		query.addCriteria(Criteria.where("uuid").is(uuid));
+		query.with(new Sort(Sort.Direction.DESC, "createdAt"));		
 		query.with(pageable);
+		long total = mongoTemplate.count(query, AuditLog.class);
 		List<AuditLog> items = mongoTemplate.find(query, AuditLog.class);
-		return items;
+		return new HTTPListResponse(items, total, pageable.getPageNumber(), pageable.getPageSize());
+	}
+	@RequestMapping(path="/list",method=RequestMethod.GET)
+	@ResponseBody
+	public Object listAll(Pageable pageable) {
+		
+		Query query = new Query();
+		
+		query.with(new Sort(Sort.Direction.DESC, "createdAt"));		
+		query.with(pageable);
+		long total = mongoTemplate.count(query, AuditLog.class);
+		List<AuditLog> items = mongoTemplate.find(query, AuditLog.class);
+		return new HTTPListResponse(items, total, pageable.getPageNumber(), pageable.getPageSize());
 	}
 	
 	
